@@ -31,9 +31,6 @@ if numero_de_jogadores == 2:
     input('PRESSIONE [ENTER] PARA SAIR')
 elif numero_de_jogadores == 1:
     while resp != 'N':
-        tabuleiro = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
-        numjog = 1
-        jogador = list()
         while not verificação():
             os.system('cls')
             desenho_do_tabuleiro()
