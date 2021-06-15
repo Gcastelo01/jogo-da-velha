@@ -1,21 +1,21 @@
-resultado = ''
-numjog = 1
-jogador = list()
-vitjog = 0
-vitcomp = 0
-resp = ''
-
 class Tabuleiro:
     def __init__(self) -> None:
         self.tabuleiro = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
-    
+        self.resultado = ''
+        self.numjog = 1
+        self.jogador = list()
+        self.vitjog = 0
+        self.vitcomp = 0
+        self.resp = ''
 
     def resetar_tabuleiro(self) -> None:
         self.tabuleiro = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
+        self.numjog = 1
+
 
     def desenho_do_tabuleiro(self):
         print(f'\n| O JOGO DA VELHA |\n'
-            f'\nPlacar: {vitjog} X {vitcomp}\n')
+            f'\nPlacar: {self.vitjog} X {self.vitcomp}\n')
         print(f' {self.tabuleiro[0][0]} | {self.tabuleiro[0][1]} | {self.tabuleiro[0][2]}\n'
             f'---+---+---\n'
             f' {self.tabuleiro[1][0]} | {self.tabuleiro[1][1]} | {self.tabuleiro[1][2]}\n'
@@ -93,12 +93,12 @@ class Tabuleiro:
     def jogada(self, x):
         for c in self.tabuleiro:
             for pos, d in enumerate(c):
-                if d.isnumeric() and d == x and numjog % 2 == 1:
-                    jogador.append(d)
+                if d.isnumeric() and d == x and self.numjog % 2 == 1:
+                    self.jogador.append(d)
                     c.remove(d)
                     c.insert(pos, 'X')
                     return True
-                elif d.isnumeric() and d == x and numjog % 2 == 0:
+                elif d.isnumeric() and d == x and self.numjog % 2 == 0:
                     c.remove(d)
                     c.insert(pos, 'O')
                     return True
