@@ -8,29 +8,33 @@ numero_de_jogadores = int(input('>>>>>>>> O JOGO DA VELHA 5000 <<<<<<<\n'
                                 '\nQuantos Jogadores vão Jogar? [1/2] '))
 
 if numero_de_jogadores == 2:
-    while not tabuleiro.verificação():
-        os.system('cls')
+    while tabuleiro.resp != 'N':
+        while not tabuleiro.verificação():
+            os.system('cls')
+            tabuleiro.desenho_do_tabuleiro()
+            if tabuleiro.numjog % 2 == 1:
+                tabuleiro.jog = 1
+            else:
+                tabuleiro.jog = 2
+
+            if not tabuleiro.jogada(str(input(f'Digite o numero da casa em que vai jogar, Jogador {tabuleiro.jog}: '))):
+                print('ERRO! Jogada inválida! Tente novamente.')
+                tabuleiro.numjog -= 1
+            tabuleiro.numjog += 1
+
         tabuleiro.desenho_do_tabuleiro()
-        if tabuleiro.numjog % 2 == 1:
-            tabuleiro.jog = 1
+        if (tabuleiro.numjog - 1) % 2 == 1:
+            os.system('cls')
+            print('FIM DE JOGO! Vitória do jogador 1!!!')
+            tabuleiro.vitjog += 1
         else:
-            tabuleiro.jog = 2
-
-        if not tabuleiro.jogada(str(input(f'Digite o numero da casa em que vai jogar, Jogador {tabuleiro.jog}: '))):
-            print('ERRO! Jogada inválida! Tente novamente.')
-            tabuleiro.numjog -= 1
-        tabuleiro.numjog += 1
-
-    tabuleiro.desenho_do_tabuleiro()
-    if (tabuleiro.numjog - 1) % 2 == 1:
-        os.system('cls')
-        print('FIM DE JOGO! Vitória do jogador 1!!!')
-        tabuleiro.vitjog += 1
-    else:
-        os.system('cls')
-        print('FIM DE JOGO! Vitória do jogador 2!!!')
-        tabuleiro.vitcomp += 1
-    input('PRESSIONE [ENTER] PARA SAIR')
+            os.system('cls')
+            print('FIM DE JOGO! Vitória do jogador 2!!!')
+            tabuleiro.vitcomp += 1
+        tabuleiro.resp = input('Deseja jogar novamente? [S/N] ').upper()
+        tabuleiro.resetar_tabuleiro()
+    tabuleiro.tela_do_final_jog()
+      
 elif numero_de_jogadores == 1:
     while tabuleiro.resp != 'N':
         while not tabuleiro.verificação():
@@ -190,11 +194,6 @@ elif numero_de_jogadores == 1:
         tabuleiro.resetar_tabuleiro()
 
     os.system('cls')
-    print(f'>>>>> FIM DE JOGO! <<<<<\n'
-          f'\n|     PLACAR GERAL:    |\n'
-          f'\nCOMPUTADOR: [{tabuleiro.vitcomp:^3}]\n'
-          f'JOGADOR:    [{tabuleiro.vitjog:^3}]\n')
-    input('\nPRESSIONE [ENTER] PARA SAIR')
-
+    tabuleiro.tela_do_final_cpu()
 else:
     print('ERRO! Numero Inválido. Tente novamente')

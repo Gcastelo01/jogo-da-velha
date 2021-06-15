@@ -8,9 +8,28 @@ class Tabuleiro:
         self.vitcomp = 0
         self.resp = ''
 
+
+    def tela_do_final_cpu(self):
+        print(f'>>>>> FIM DE JOGO! <<<<<\n'
+        f'\n|     PLACAR GERAL:    |\n'
+        f'\nCOMPUTADOR: [{self.vitcomp:^3}]\n'
+        f'JOGADOR:    [{self.vitjog:^3}]\n')
+        input('\nPRESSIONE [ENTER] PARA SAIR')
+
+
+    def tela_do_final_jog(self):
+        print(f'>>>>> FIM DE JOGO! <<<<<\n'
+        f'\n|     PLACAR GERAL:    |\n'
+        f'\nJOGADOR 1:  [{self.vitjog:^3}]\n'
+        f'JOGADOR 2:  [{self.vitcomp:^3}]\n')
+        input('\nPRESSIONE [ENTER] PARA SAIR')
+
+
+
     def resetar_tabuleiro(self) -> None:
         self.tabuleiro = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
         self.numjog = 1
+        
 
 
     def desenho_do_tabuleiro(self):
