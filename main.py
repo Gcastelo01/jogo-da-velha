@@ -1,4 +1,7 @@
-import os
+#TODO Terminar de corrigir nomes das variáveis (trocar para métodos get e set onde eu ainda estiver usando atribuição direta)
+#TODO Realizar correção e refatoração no código de jogadas contra o computador (ainda nem olhei para ele)
+#TODO otimizar algoritmos de jogadas do computador (prioridade disso é baixa. As respostas são rápidas o suficiente).
+
 from random import randint
 from functions import *
 
@@ -40,7 +43,7 @@ if tabuleiro.get_jogadores() == 2:
 
         tabuleiro.set_resposta()
         tabuleiro.resetar_tabuleiro()
-        
+
     tabuleiro.limpa_tela()
     tabuleiro.tela_do_final_jog()
       
