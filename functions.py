@@ -23,7 +23,28 @@ class Tabuleiro:
 
         else:
             system('cls')
-    
+
+        pass
+
+
+    def jogada_incorreta(self):
+        print('ERRO! Jogada inválida! Tente novamente.')
+        input('PRESSIONE [ENTER] PARA CONTINUAR')
+        self.decrease_numero_jogada()
+        pass
+
+
+    def jogar_no_tabuleiro(self, posicao: int, remover: str, inserir: str, posicao_inserir: int):
+        if (posicao_inserir == posicao):
+            self.__tabuleiro[posicao].remove(remover)
+            self.__tabuleiro[posicao].insert(posicao, inserir)
+
+        else:
+            self.__tabuleiro[posicao].remove(remover)
+            self.__tabuleiro[posicao].insert(posicao_inserir, inserir)
+        
+
+
 
     def increase_vit_cpu(self):
         self.__vitcomp += 1
@@ -51,6 +72,10 @@ class Tabuleiro:
         self.__resp = input('Deseja jogar novamente? [S/N] ').upper()
 
 
+    def get_jogada(self, jogada):
+        return self.__jogador[jogada]
+
+
     def get_jogadores(self):
         return self.__numero_de_jogadores
 
@@ -66,8 +91,8 @@ class Tabuleiro:
     def tela_do_final_cpu(self):
         print(f'>>>>> FIM DE JOGO! <<<<<\n'
         f'\n|     PLACAR GERAL:    |\n'
-        f'\nCOMPUTADOR: [{self._vitcomp:^3}]\n'
-        f'Jogador:    [{self._vitjog:^3}]\n')
+        f'\nCOMPUTADOR: [{self.__vitcomp:^3}]\n'
+        f'JOGADOR:    [{self.__vitjog:^3}]\n')
         input('\nPRESSIONE [ENTER] PARA SAIR')
 
 
@@ -75,7 +100,7 @@ class Tabuleiro:
         print(f'>>>>> FIM DE JOGO! <<<<<\n'
         f'\n|     PLACAR GERAL:    |\n'
         f'\nJOGADOR 1:  [{self.__vitjog:^3}]\n'
-        f'Jogador 2:  [{self.__vitcomp:^3}]\n')
+        f'JOGADOR 2:  [{self.__vitcomp:^3}]\n')
         input('\nPRESSIONE [ENTER] PARA SAIR')
         self.limpa_tela()
 
