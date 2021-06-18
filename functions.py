@@ -64,8 +64,10 @@ class Tabuleiro:
 
 
     def set_jogadores(self):
-        self.__numero_de_jogadores = int(input('>>>>>>>> O JOGO DA VELHA 5000 <<<<<<<\n'
-                                '\nQuantos Jogadores vão Jogar? [1/2] '))
+        if platform == 'linux':
+            system('figlet O Jogo Da Velha 5000')
+        
+        self.__numero_de_jogadores = int(input('\nQuantos Jogadores vão Jogar? [1/2] '))
 
 
     def set_resposta(self):
@@ -108,12 +110,13 @@ class Tabuleiro:
     def resetar_tabuleiro(self) -> None:
         self.__tabuleiro = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
         self.__numjog = 1
+        self.__jogador = list()
         
 
 
     def desenho_do_tabuleiro(self):
-        print(f'\n| O JOGO DA VELHA |\n'
-            f'\nPlacar: {self.__vitjog} X {self.__vitcomp}\n')
+        system('figlet  O JOGO DA VELHA  ')
+        print(f'\nPlacar: {self.__vitjog} X {self.__vitcomp}\n')
         print(f' {self.__tabuleiro[0][0]} | {self.__tabuleiro[0][1]} | {self.__tabuleiro[0][2]}\n'
             f'---+---+---\n'
             f' {self.__tabuleiro[1][0]} | {self.__tabuleiro[1][1]} | {self.__tabuleiro[1][2]}\n'

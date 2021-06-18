@@ -198,7 +198,7 @@ elif tabuleiro.get_jogadores() == 1:
         tabuleiro.limpa_tela()
         tabuleiro.desenho_do_tabuleiro()
 
-        if tabuleiro.get_numero_jogada() > 10:
+        if tabuleiro.get_numero_jogada() == 10:
             print('EMPATE!!!')
 
         elif (tabuleiro.get_numero_jogada() - 1) % 2 == 1:
